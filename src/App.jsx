@@ -39,7 +39,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <h2>React Weather App</h2>
+        <h2>Aplicación del Clima</h2>
         <div className="row">
           <input type="text" onKeyDown={handleSearch} autoFocus />
         </div>
