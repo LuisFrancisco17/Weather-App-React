@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Icons from './components/Icons'
+import Icons from './components/Icons';
+
 const App = () => {
   const [search, setSearch] = useState("lima");
   const [values, setValues] = useState("");
   const [icon, setIcon] = useState("");
 
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${search}&lang=es&units=metric&appid=a839e3d2f7d006a95610cfd459ff4966`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${search}&lang=es&units=metric&appid=${import.meta.env.VITE_API_KEY}`;
 
   const getData = async () => {
     await fetch(URL)
@@ -51,7 +52,7 @@ const App = () => {
               <p className="temp">{values.main.temp.toFixed(0)}&deg;</p>
               <img className="icon" src={Icons(icon)} alt="icon-weather" />
               <div className="card-footer">
-                <p className="temp-max-min">{values.main.temp_min.toFixed(0)}&deg; | {values.main.temp_max.toFixed(0)}&deg;</p>
+                <p className="temp-max-min">Min: {values.main.temp_min.toFixed(0)}&deg; | Max: {values.main.temp_max.toFixed(0)}&deg;</p>
               </div>
             </div>
           ) : (
